@@ -1,0 +1,24 @@
+{
+	"name": "three-ts-boilerplate",
+	"version": "0.1.0",
+	"description": "Basic app template using npm, three.js, Typescript, and Browserify.",
+	"main": "index.html",
+	"author": "Trygve Wastvedt <trygve.wastvedt@gmail.com>",
+	"license": " ",
+	"dependencies": {
+		"browserify-shader": "^0.1.0",
+		"stats-js": "^1.0.0-alpha1",
+		"three": "^0.71.0",
+		"three-orbit-controls": "^71.0.0"
+	},
+	"devDependencies": {
+		"browserify": "^11.0.1",
+		"tsify": "^0.11.10"
+	},
+
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+
+    "build": "browserify -t browserify-shader ts/main.ts -p [ tsify --noImplicitAny ] > bundle.js"
+	}
+}
