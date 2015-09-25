@@ -1,24 +1,37 @@
 {
-	"name": "three-ts-boilerplate",
-	"version": "0.1.0",
-	"description": "Basic app template using npm, three.js, Typescript, and Browserify.",
-	"main": "index.html",
-	"author": "Trygve Wastvedt <trygve.wastvedt@gmail.com>",
-	"license": " ",
-	"dependencies": {
-		"browserify-shader": "^0.1.0",
-		"stats-js": "^1.0.0-alpha1",
-		"three": "^0.71.0",
-		"three-orbit-controls": "^71.0.0"
-	},
-	"devDependencies": {
-		"browserify": "^11.0.1",
-		"tsify": "^0.11.10"
-	},
-
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-
-    "build": "browserify -t browserify-shader ts/main.ts -p [ tsify --noImplicitAny ] > bundle.js"
-	}
+  "name": "three-ts-boilerplate",
+  "version": "0.1.0",
+  "description": "Basic app template using npm, three.js, Typescript, and Browserify.",
+  "repository": {"type": "git","url": "https://github.com/twastvedt/threejs-ts"},
+  "main": "index.html",
+  "author": "Trygve Wastvedt <trygve.wastvedt@gmail.com>",
+  "license": " ",
+  "dependencies": {
+    "stats-js": "^1.0.0-alpha1",
+    "three": "^0.71.0",
+    "three-orbit-controls": "^71.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "tsify": "^0.11.10",
+    "http-server": "latest",
+    "live-reload": "latest",
+    "parallelshell": "latest",
+    "watchify": "3.4.0",
+    "glslify": "2.3.1",
+    "glslify-import": "1.0.0"
+  },
+  "glslify": {
+    "transform": ["glslify-import"]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify -t glslify src/ts/main.ts --debug -p [ tsify --noImplicitAny ] -o dist/bundle.js",
+    "post-build": "copy",
+    "copy": "cp -rt dist/ src/style.css src/index.html src/assets",
+    "watch":   "watchify -t glslify src/ts/main.ts --debug -p [ tsify --noImplicitAny ] -o dist/bundle.js",
+    "view": "http-server ./dist -o",
+    "livereload": "live-reload --port 9091 dist/",
+    "start": "parallelshell \"npm run watch\" \"npm run livereload\" \"npm run view\""
+  }
 }

@@ -3,7 +3,8 @@
     "sourceMap": true,
     "removeComments": true,
     "module": "commonjs",
-    "target": "es5"
+    "target": "es5",
+    "out": "tsc.js"
   },
   "exclude": [
     "node_modules"

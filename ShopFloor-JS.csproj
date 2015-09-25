@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -24,43 +24,47 @@
   <ItemGroup>
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
-    <Content Include="app.css" />
-    <Content Include="css\style.css" />
-    <Content Include="index.html" />
-    <TypeScriptCompile Include="ts\app\app.ts" />
-    <TypeScriptCompile Include="ts\app\camera.ts" />
-    <TypeScriptCompile Include="ts\app\container.ts" />
-    <TypeScriptCompile Include="ts\app\geometry.ts" />
-    <TypeScriptCompile Include="ts\app\light.ts" />
-    <TypeScriptCompile Include="ts\app\material.ts" />
-    <TypeScriptCompile Include="ts\app\renderer.ts" />
-    <TypeScriptCompile Include="ts\app\scene.ts" />
-    <TypeScriptCompile Include="ts\app\texture.ts" />
-    <Content Include="ts\config.js" />
-    <Content Include="ts\lib\TrackballControls.js" />
-    <Content Include="ts\lib\Detector.js" />
-    <Content Include="ts\lib\shader.js" />
-    <TypeScriptCompile Include="ts\main.ts" />
-    <Content Include="assets\textures\grass.png" />
+    <Content Include="dist\assets\textures\grass.png" />
+    <Content Include="dist\bundle.js" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\style.css" />
+    <Content Include="src\assets\textures\grass.png" />
+    <Content Include="src\index.html" />
+    <Content Include="src\style.css" />
+    <Content Include="src\ts\config.js" />
+    <Content Include="src\ts\vendor\Detector.js" />
+    <Content Include="src\ts\vendor\TrackballControls.js" />
+    <TypeScriptCompile Include="src\ts\app\app.ts" />
+    <TypeScriptCompile Include="src\ts\app\camera.ts" />
+    <TypeScriptCompile Include="src\ts\app\container.ts" />
+    <TypeScriptCompile Include="src\ts\app\geometry.ts" />
+    <TypeScriptCompile Include="src\ts\app\light.ts" />
+    <TypeScriptCompile Include="src\ts\app\material.ts" />
+    <TypeScriptCompile Include="src\ts\app\renderer.ts" />
+    <TypeScriptCompile Include="src\ts\app\scene.ts" />
+    <TypeScriptCompile Include="src\ts\app\texture.ts" />
+    <TypeScriptCompile Include="src\ts\main.ts" />
     <Content Include="web.config" />
-    <TypeScriptCompile Include="typings\custom.d.ts" />
-    <TypeScriptCompile Include="typings\es6-promise\es6-promise.d.ts" />
-    <TypeScriptCompile Include="typings\stats\stats.d.ts" />
-    <TypeScriptCompile Include="typings\threejs\detector.d.ts" />
-    <TypeScriptCompile Include="typings\threejs\three-orbitcontrols.d.ts" />
-    <TypeScriptCompile Include="typings\threejs\three.d.ts" />
-    <TypeScriptCompile Include="typings\tsd.d.ts" />
-    <TypeScriptCompile Include="typings\webaudioapi\waa.d.ts" />
-    <TypeScriptCompile Include="typings\webrtc\MediaStream.d.ts" />
+    <TypeScriptCompile Include="src\ts\lib\three.ts" />
+    <TypeScriptCompile Include="src\typings\custom.d.ts" />
+    <TypeScriptCompile Include="src\typings\es6-promise\es6-promise.d.ts" />
+    <TypeScriptCompile Include="src\typings\stats\stats.d.ts" />
+    <TypeScriptCompile Include="src\typings\threejs\detector.d.ts" />
+    <TypeScriptCompile Include="src\typings\threejs\three-orbitcontrols.d.ts" />
+    <TypeScriptCompile Include="src\typings\threejs\three.d.ts" />
+    <TypeScriptCompile Include="src\typings\tsd.d.ts" />
+    <TypeScriptCompile Include="src\typings\webaudioapi\waa.d.ts" />
+    <TypeScriptCompile Include="src\typings\webrtc\MediaStream.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\shaders\shift.glsl" />
-    <Content Include="assets\shaders\simple.frag" />
-    <Content Include="assets\shaders\simple.vert" />
-    <Content Include="assets\font\Hamburger.ttf" />
+    <Content Include="src\shaders\shift.glsl" />
+    <Content Include="src\shaders\simple.frag" />
+    <Content Include="src\shaders\simple.vert" />
     <Content Include="package.json" />
     <Content Include="tsd.json" />
     <Content Include="tsconfig.json" />
+    <Content Include="src\assets\font\Hamburger.ttf" />
+    <Content Include="dist\assets\font\Hamburger.ttf" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -68,6 +72,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
@@ -97,17 +102,19 @@
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
     <TypeScriptTarget>ES5</TypeScriptTarget>
-    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
-    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
-    <TypeScriptOutFile />
-    <TypeScriptOutDir />
+    <TypeScriptOutFile>
+    </TypeScriptOutFile>
+    <TypeScriptOutDir>vs-out</TypeScriptOutDir>
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
