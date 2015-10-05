@@ -1,5 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
-
 var Detector = require("./vendor/Detector");
 import App from "./app/app";
 import {container} from "./app/container";

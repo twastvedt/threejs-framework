@@ -2,7 +2,10 @@
   "name": "three-ts-boilerplate",
   "version": "0.1.0",
   "description": "Basic app template using npm, three.js, Typescript, and Browserify.",
-  "repository": {"type": "git","url": "https://github.com/twastvedt/threejs-ts"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twastvedt/threejs-ts"
+  },
   "main": "index.html",
   "author": "Trygve Wastvedt <trygve.wastvedt@gmail.com>",
   "license": " ",
@@ -12,6 +15,7 @@
     "three-orbit-controls": "^71.0.0"
   },
   "devDependencies": {
+    "watch": "0.16.0",
     "browserify": "^11.0.1",
     "tsify": "^0.11.10",
     "http-server": "latest",
@@ -22,16 +26,23 @@
     "glslify-import": "1.0.0"
   },
   "glslify": {
-    "transform": ["glslify-import"]
+    "transform": [ "glslify-import" ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
     "build": "browserify -t glslify src/ts/main.ts --debug -p [ tsify --noImplicitAny ] -o dist/bundle.js",
-    "post-build": "copy",
-    "copy": "cp -rt dist/ src/style.css src/index.html src/assets",
-    "watch":   "watchify -t glslify src/ts/main.ts --debug -p [ tsify --noImplicitAny ] -o dist/bundle.js",
+    "post-build": "copy-assets",
+
+    "copy-assets": "cp -rt dist/ src/assets && cp -rt dist/ src/html/.",
+
+    "watch": "parallelshell \"npm run watch-assets\" \"npm run watch-ts\"",
+    "watch-assets": "watch \"npm run copy-assets\" src/assets src/html",
+    "watch-ts": "watchify -t glslify src/ts/main.ts --debug -p [ tsify --noImplicitAny ] -o dist/bundle.js",
+
     "view": "http-server ./dist -o",
     "livereload": "live-reload --port 9091 dist/",
+
     "start": "parallelshell \"npm run watch\" \"npm run livereload\" \"npm run view\""
   }
 }

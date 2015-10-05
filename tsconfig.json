@@ -6,7 +6,8 @@
     "target": "es5",
     "out": "tsc.js"
   },
-  "exclude": [
-    "node_modules"
+  "files": [
+    "src/typings/tsd.d.ts",
+    "src/ts/main.ts"
   ]
 }

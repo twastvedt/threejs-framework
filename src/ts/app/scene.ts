@@ -6,7 +6,7 @@ import * as Renderers from "./renderer";
 import {container} from "../app/container";
 import THREE from "../lib/three";
 
-export class DefaultScene extends THREE.Scene {
+export class MaterialTestScene extends THREE.Scene {
 	camera: Cameras.MyPerspectiveCamera;
 	renderer: Renderers.MyWebGLRenderer;
 	controls: THREE.OrbitControls;

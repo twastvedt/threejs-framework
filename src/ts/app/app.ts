@@ -6,13 +6,19 @@ import * as Scenes from "./scene";
 import THREE from "../lib/three";
 import {container} from "./container";
 
+interface Scene extends THREE.Scene {
+	renderer: THREE.Renderer;
+	animate: () => void;
+}
+
 export default class App {
+
 	meshes: THREE.Mesh[] = [];
 
-	scene: Scenes.DefaultScene;
+	scene: Scene;
 
 	constructor() {
-		this.scene = new Scenes.DefaultScene();
+		this.scene = new Scenes.MaterialTestScene();
 
 		//for debugging from the console
 		(<any>window).scene = this.scene;
