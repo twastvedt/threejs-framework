@@ -1,7 +1,7 @@
 import THREE from "../lib/three";
 import {container} from "./container";
 
-export class MyWebGLRenderer extends THREE.WebGLRenderer {
+export class TF_WebGLRenderer extends THREE.WebGLRenderer {
 	constructor(params?: THREE.WebGLRendererParameters) {
 		super(params);
 

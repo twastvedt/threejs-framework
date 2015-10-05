@@ -1,18 +1,29 @@
 import * as Cameras from "./camera";
 import * as Geometry from "./geometry";
+import * as Objects from "./object";
 import * as Lights from "./light";
 import Materials from "./material";
 import * as Renderers from "./renderer";
 import {container} from "../app/container";
 import THREE from "../lib/three";
 
-export class MaterialTestScene extends THREE.Scene {
+export class TF_Scene extends THREE.Scene {
+
 	camera: Cameras.MyPerspectiveCamera;
-	renderer: Renderers.MyWebGLRenderer;
+	renderer: Renderers.TF_WebGLRenderer;
 	controls: THREE.OrbitControls;
 
 	lighting: Lights.DefaultLightingRig;
 	cubes: THREE.Object3D[];
+
+	constructor() {
+		super();
+	}
+
+	animate: () => void;
+}
+
+export class MaterialTestScene extends TF_Scene {
 
 	constructor() {
 		super();
@@ -21,7 +32,7 @@ export class MaterialTestScene extends THREE.Scene {
 
 		this.camera.position.set(0, 1000, 0);
 
-		this.renderer = new Renderers.MyWebGLRenderer();
+		this.renderer = new Renderers.TF_WebGLRenderer();
 		this.renderer.setClearColor(new THREE.Color("#fff"));
 
 		this.controls = new THREE.OrbitControls(this.camera, container);
